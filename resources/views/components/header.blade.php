@@ -1,33 +1,56 @@
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img src="images/Logo.png" class="h-20" />
-    </a>
-    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-        </svg>
-    </button>
-    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-      <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+  <div class="bg-gray-900 text-white py-2">
+    <div class="max-w-screen-xl mx-auto flex justify-between items-center">
+      <a href="/">
+      <img src="images/Logo.png" alt="Logo" class="h-20 mb-2">
+      </a>
+      <div class="flex flex-col items-start">
+        <div class="flex space-x-10"> 
+          <div class="flex items-center space-x-4"> 
+            <img src="images/emailicon.svg" alt="mailimage" class="h-10">
+            <div class="flex flex-col items-start text-left">
+              <span class="font-bold ">Email Geral</span>
+              <a href=" mailto:loja@targettools.pt" class="hover:underline decoration-red-600"> loja@targettools.pt </a>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4"> 
+            <img src="images/phoneicon.svg" alt="telefoneimage" class="h-10">
+            <div class="flex flex-col items-start text-left">
+              <span class="font-bold">Telefone</span>
+              <a href="tel:351223228781" class=" hover:underline decoration-red-600"> +351 223 228 781 </a>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4"> 
+            <img src="images/clockicon.svg" alt="horarioimage" class="h-10">
+            <div class="flex flex-col items-start text-left">
+              <span class="font-bold">Horário de Trabalho</span>
+              <span class="mt-2">Seg-Sex 09:00 - 18:30</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-gray-900">
+    <div class="max-w-screen-xl mx-auto p-2">
+      <ul class="flex justify-center space-x-4">
         <li>
-          <a href="/noticias" class="block py-2 px-3 hover:bg-gray-100 md:hover:bg-transparent md:border-0 dark:text-red-600 md:dark:hover:text-white hover:underline decoration-red-600">Noticias</a>
+          <a href="/noticias" class="block py-2 px-3 dark:text-red-600 hover:underline decoration-red-600">Noticias</a>
         </li>
         <li>
-          <a href="/sobre" class="block py-2 px-3 hover:bg-gray-100 md:hover:bg-transparent md:border-0 dark:text-red-600 md:dark:hover:text-white hover:underline decoration-red-600">Sobre</a>
+          <a href="/sobre" class="block py-2 px-3 dark:text-red-600 hover:underline decoration-red-600">Sobre</a>
         </li>
         <li>
-          <a href="/serviços" class="block py-2 px-3 hover:bg-gray-100 md:hover:bg-transparent md:border-0 dark:text-red-600 md:dark:hover:text-white hover:underline decoration-red-600">Serviços</a>
+          <a href="/serviços" class="block py-2 px-3 dark:text-red-600 hover:underline decoration-red-600">Serviços</a>
         </li>
         <li>
-          <a href="/parceiros" class="block py-2 px-3 hover:bg-gray-100 md:hover:bg-transparent md:border-0 dark:text-red-600 md:dark:hover:text-white hover:underline decoration-red-600">Parceiros</a>
+          <a href="/parceiros" class="block py-2 px-3 dark:text-red-600 hover:underline decoration-red-600">Parceiros</a>
         </li>
         <li>
-          <a href="/equipamentos" class="block py-2 px-3 hover:bg-gray-100 md:hover:bg-transparent md:border-0 dark:text-red-600 md:dark:hover:text-white hover:underline decoration-red-600">Equipamentos</a>
+          <a href="/equipamentos" class="block py-2 px-3 dark:text-red-600 hover:underline decoration-red-600">Equipamentos</a>
         </li>
         <li>
-          <a href="/contactos" class="block py-2 px-3 hover:bg-gray-100 md:hover:bg-transparent md:border-0 dark:text-red-600 md:dark:hover:text-white hover:underline decoration-red-600">Contactos</a>
+          <a href="/contactos" class="block py-2 px-3 dark:text-red-600 hover:underline decoration-red-600">Contactos</a>
         </li>
       </ul>
     </div>

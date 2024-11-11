@@ -60,7 +60,7 @@
                             <div class="ml-4">
                                 <dt class="text-lg leading-6 font-medium text-gray-900">E-mail</dt>
                                 <dd class="mt-2 text-base text-gray-500">
-                                    <a href="mailto:nunorocha.targettools@gmail.com" class="dark:text-red-600 hover:underline decoration-red-600">nunorocha.targettools@gmail.com</a>
+                                    <a href="mailto:loja@targettools.pt" class="dark:text-red-600 hover:underline decoration-red-600">loja@targettools.pt</a>
                                 </dd>
                             </div>
                         </div>
