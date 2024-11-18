@@ -3,10 +3,10 @@
 <section id="Projects"
     class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
 
-    @foreach ($equipment as $equipments)
+    @foreach ($equipments as $equipment)
         <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-            <a href="#">
-                <img src="images/{{ $equipment->image }}"
+            <a href="#">                
+                <img src="/images/equipments/{{ $equipment->image }}"
                     alt="{{ $equipment->name }}" class="h-80 w-72 object-cover rounded-t-xl" />
                 <div class="px-4 py-3 w-72">
                     <span class="text-gray-400 mr-3 uppercase text-xs">{{ $equipment->brand }}</span>
