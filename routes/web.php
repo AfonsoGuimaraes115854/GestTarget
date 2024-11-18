@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Category;
+use App\Models\Partner;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/noticias', function () {
@@ -17,7 +18,8 @@ Route::get('/about', function () {
 });
 
 Route::get('/parceiros', function () {
-    return view('parceiros');
+    $partners = Partner::all();
+    return view('parceiros', compact('partners'));
 });
 
 Route::get('/contactos', function () {

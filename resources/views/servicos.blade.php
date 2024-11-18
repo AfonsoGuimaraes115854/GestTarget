@@ -1,6 +1,4 @@
 <x-guestLayout>
-    <x-header/>
-
     <div class="container relative flex flex-col justify-between h-full max-w-6xl px-10 mx-auto xl:px-0 mt-5">
         <h2 class="flex justify-center mb-1 text-3xl font-extrabold leading-tight text-gray-900">Serviços</h2><br>
         <div class="w-full">
@@ -58,6 +56,4 @@
             </div>
         </div>
     </div>
-
-    <x-footer/>
 </x-guestLayout>

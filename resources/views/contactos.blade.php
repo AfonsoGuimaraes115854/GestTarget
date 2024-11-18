@@ -1,5 +1,4 @@
 <x-guestLayout>
-<x-header/>
     <div class="bg-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex">
             <div class="w-1/2">
@@ -118,5 +117,12 @@
             </div>
         </div>
     </div>
-<x-footer/>    
+
+    <div class="mt-16 lg:mt-20">
+    <div class="rounded-lg overflow-hidden mx-auto" style="max-width: 800px;">
+        <iframe width="100%" height="480" style="border:0;" allowfullscreen="" loading="lazy"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3005.251111315662!2d-8.524471523264804!3d41.12904387133384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd246383d3666097%3A0xf79990cddf74beff!2sTarget%20Tools!5e0!3m2!1spt-PT!2spt!4v1729108198864!5m2!1spt-PT!2spt">
+        </iframe>
+    </div>
+</div> 
 </x-guestLayout>
