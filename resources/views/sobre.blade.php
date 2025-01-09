@@ -1,8 +1,7 @@
 <x-guestLayout>
 
-<section id="sobre-nos-e-valores" class="bg-gray-100 py-12">
-    <div class="container mx-auto px-6 md:px-12 lg:px-20">
-        <!-- Sobre Nós -->
+<section id="sobre-nos-e-valores">
+    <div class="container mx-auto px-6 md:px-12 lg:px-20 mt-5">
         <div class="mb-12 text-center">
             <h2 class="flex justify-center mb-6 text-3xl md:text-4xl font-extrabold leading-tight text-gray-900">Sobre Nós</h2>
             <p class="text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto">
@@ -13,15 +12,10 @@
                 Em parceria com sua esposa <span class="font-semibold">Mónica Rocha</span> e contando com o suporte de mais dois colaboradores talentosos, a <span class="font-semibold text-red-600">TargetTools</span> compromete-se não só a fornecer os melhores equipamentos, mas também as técnicas mais atualizadas e produtos de ponta. Assim, atende às necessidades constantes da evolução da indústria, cimentando seu nome no mercado.
             </p>
         </div>
-
-        <!-- Missão, Visão e Valores -->
         <div id="missao-visao-valores">
-            <!-- Título principal -->
             <div class="text-center mb-12">
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Missão, Visão e Valores</h2>
             </div>
-
-            <!-- Missão -->
             <div class="mb-8">
                 <h3 class="text-2xl md:text-3xl font-semibold text-red-600 mb-4">Missão</h3>
                 <p class="text-lg text-gray-600 leading-relaxed">
@@ -29,8 +23,6 @@
                     colocando ao seu serviço toda a nossa experiência e profissionalismo.
                 </p>
             </div>
-
-            <!-- Visão -->
             <div class="mb-8">
                 <h3 class="text-2xl md:text-3xl font-semibold text-red-600 mb-4">Visão</h3>
                 <p class="text-lg text-gray-600 leading-relaxed">
@@ -39,8 +31,6 @@
                     pela competência, seriedade e elevado profissionalismo.
                 </p>
             </div>
-
-            <!-- Valores -->
             <div>
                 <h3 class="text-2xl md:text-3xl font-semibold text-red-600 mb-4">Valores</h3>
                 <ul class="list-disc list-inside text-lg text-gray-600 leading-relaxed space-y-4">

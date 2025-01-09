@@ -99,5 +99,11 @@ class PartnerSeeder extends Seeder
             'description' => 'Máquinas de polimento e decapagem de alta qualidade para joalheiros, ourives e relojoeiros.'
         ]);
         
+        Partner::create([
+            'name' => 'Niqua',
+            'url' => 'https://www.niqua.de/',
+            'image' => 'Niqualogo.png',
+            'description' => 'Ferramentas de precisão e lâminas de serra de alta qualidade para joalheiros e artesãos.'
+        ]);
     }
 }

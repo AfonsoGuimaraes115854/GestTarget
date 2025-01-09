@@ -7,6 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Equipment extends Model
 {
-    /** @use HasFactory<\Database\Factories\EquipmentFactory> */
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'brand',
+        'ref',
+        'description',
+        'image',
+        'status',
+    ];
+
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = [];
 }

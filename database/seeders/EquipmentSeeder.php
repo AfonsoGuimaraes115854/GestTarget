@@ -19,8 +19,17 @@ class EquipmentSeeder extends Seeder
         Equipment::create([
             'name' => 'Elmasonic Select 100',
             'brand' => 'Elma',
+            'ref' => '123213',
             'description' => 'Não disponível',
             'image' => 'elma_machine_1.png'
+        ]);
+
+        Equipment::create([
+            'name' => 'Alicate TargetTools',
+            'brand' => 'TargetTools',
+            'ref' => '12321311',
+            'description' => '',
+            'image' => '/alicate_targettools/2.jpeg'
         ]);
     }
 }
