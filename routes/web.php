@@ -38,7 +38,8 @@ Route::get('/contactos', function () {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    $partners = Partner::all();
+    return view('welcome', compact('partners'));
 });
 
 Route::get('/serviços', function () {
@@ -70,8 +71,6 @@ Route::get('/brands', function () {
 Route::get('/sobre', function () {
     return view('sobre');
 });
-
-
 
 Route::post('/equipments/store', function (Request $request) {
     Equipment::create([
