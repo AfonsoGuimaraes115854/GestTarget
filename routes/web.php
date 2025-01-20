@@ -75,7 +75,7 @@ Route::get('/sobre', function () {
 Route::post('/equipments/store', function (Request $request) {
     Equipment::create([
         'name' => $request->input('name'),
-        'ref' => $request->input('ref'),
+        'reference' => $request->input('reference'),
         'description' => $request->input('description'),
         'image' => $request->input('image'),
         'brand' => $request->input('brand'),

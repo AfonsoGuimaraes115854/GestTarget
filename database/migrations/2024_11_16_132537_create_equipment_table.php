@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('brand');
             $table->text('description')->nullable();
-            $table->string('image');
-            $table->string('ref');
+            $table->string('image')->nullable();
+            $table->string('reference');
             $table->timestamps();
         });
     }
