@@ -1,6 +1,6 @@
 <x-guestLayout>
 
-<section id="sobre-nos-e-valores">
+<section id="sobre-nos-e-valores" class="bg-white">
     <div class="container mx-auto px-6 md:px-12 lg:px-20 mt-5">
         <div class="mb-12 text-center">
             <h2 class="flex justify-center mb-6 text-3xl md:text-4xl font-extrabold leading-tight text-gray-900">Sobre Nós</h2>

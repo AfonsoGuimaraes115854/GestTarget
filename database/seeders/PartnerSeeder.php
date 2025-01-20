@@ -115,7 +115,7 @@ class PartnerSeeder extends Seeder
             'name' => 'Niqua',
             'url' => 'https://www.niqua.de/',
             'image' => 'Niqualogo.png',
-            'smallimage' => 'Niqualogosmall.com',
+            'smallimage' => 'Niqualogosmall.png',
             'description' => 'Ferramentas de precisão e lâminas de serra de alta qualidade para joalheiros e artesãos.'
         ]);
     }

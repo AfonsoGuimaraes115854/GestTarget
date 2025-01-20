@@ -10,45 +10,47 @@
     /* Custom Components */
   }
   
-  .scroll-linear > ul {
-    animation: animate-linear 17s linear infinite;
-  }
-  
-  .scroll-linear:hover > ul {
-    animation-play-state: paused;
-  }
-  
-  @keyframes animate-linear {
+.scroll-linear > ul {
+    display: flex;
+    width: max-content; /* Garante que todas as imagens caibam */
+    animation: animate-linear 24s linear infinite; /* Ajuste a duração conforme necessário */
+}
+
+@keyframes animate-linear {
     0% {
-      transform: translateX(50%);
+        transform: translateX(0); /* Começa da posição inicial */
     }
     100% {
-      transform: translateX(-100%);
+        transform: translateX(-50%); /* Move metade da largura total para criar o loop */
     }
+}
+
+.scroll-linear:hover > ul {
+  animation-play-state: paused;
+}  
+
+.scroll-linear-two > ul {
+  animation: animate-linear-two 15s linear infinite;
+}
+
+.scroll-linear-two:hover > ul {
+  animation-play-state: paused;
+}
+
+@keyframes animate-linear-two {
+  0% {
+    transform: translateX(75%);
   }
-  
-  .scroll-linear-two > ul {
-    animation: animate-linear-two 15s linear infinite;
+  100% {
+    transform: translateX(-100%);
   }
-  
-  .scroll-linear-two:hover > ul {
-    animation-play-state: paused;
-  }
-  
-  @keyframes animate-linear-two {
-    0% {
-      transform: translateX(75%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-  
-  .no-scrollbar ::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+}
+
+.no-scrollbar ::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -20,16 +20,25 @@
 
     <section class="flex flex-col gap-10 py-16">
         <div class="flex gap-4 flex-col px-4 h-full relative z-50 md:w-[85%] w-[95%] mx-auto">
-            <div class="flex items-center gap-4">
-
-            </div>
-            <div id="scroll-container" class="flex flex-1 overflow-x-scroll no-scrollbar hover:animate-none relative flex-col gap-2 scroll-linear">
-                <ul class="px-4 flex gap-2">
+            <div class="flex items-center gap-4"></div>
+            <div id="scroll-container" class="scroll-linear flex flex-1 overflow-x-scroll no-scrollbar relative">
+                <ul class="flex gap-0">
                     @foreach ($partners as $partner)
-                        <li class="">
+                        <li>
                             @if ($partner->smallimage)
                                 <img
-                                    src="/images/{{  $partner->smallimage }}"
+                                    src="/images/{{ $partner->smallimage }}"
+                                    class="bg-app_white min-w-[200px] h-[100px] shrink-0"
+                                    alt="{{ $partner->name }}"
+                                />
+                            @endif
+                        </li>
+                    @endforeach
+                    @foreach ($partners as $partner)
+                        <li>
+                            @if ($partner->smallimage)
+                                <img
+                                    src="/images/{{ $partner->smallimage }}"
                                     class="bg-app_white min-w-[200px] h-[100px] shrink-0"
                                     alt="{{ $partner->name }}"
                                 />
@@ -37,7 +46,7 @@
                         </li>
                     @endforeach
                 </ul>
-            </div>    
+            </div>
         </div>
     </section>
 </x-guestLayout>

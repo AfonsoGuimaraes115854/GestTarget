@@ -1,5 +1,6 @@
 <x-guest-layout>
     <x-authentication-card>
+        <section class="bg-white">
         <x-slot name="logo">
             <img src="{{ asset('images/ttsimple.png') }}" alt="TARGETTOOLS" class="w-24 h-24" />
         </x-slot>
