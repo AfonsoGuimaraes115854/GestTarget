@@ -6,11 +6,11 @@
             </h2>
         </div>
 
-        @if($newsInformation->isEmpty())
+        @if($informations->isEmpty())
             <p class="text-gray-500 text-center">Nenhuma notícia disponível no momento.</p>
         @else
             <div class="flex flex-wrap -mx-4">
-                @foreach($newsInformation as $news)
+                @foreach($informations as $news)
                     <div class="w-full max-w-full mb-8 sm:w-1/2 px-4 lg:w-1/3 flex flex-col">
                         <img src="{{ asset($news->image) }}" alt="{{ $news->name }}" class="object-cover object-center w-full h-48">
                         <div class="flex flex-grow">
@@ -20,7 +20,7 @@
                                     <a href="#"
                                         class="inline-block mb-4 text-xs font-bold capitalize border-b-2 border-blue-600 hover:text-blue-600">Notícia
                                     </a>
-                                    <a href="{{ route('news.show', $news->slug) }}"
+                                    <a href="/news/{{ $news->slug}}"
                                         class="block mb-4 text-2xl font-black leading-tight hover:underline hover:text-blue-600">
                                         {{ $news->name }}
                                     </a>
@@ -29,7 +29,7 @@
                                     </p>
                                 </div>
                                 <div>
-                                    <a href="{{ route('news.show', $news->slug) }}"
+                                    <a href="/news/{{ $news->slug}}"
                                         class="inline-block pb-1 mt-2 text-base font-black text-blue-600 uppercase border-b border-transparent hover:border-blue-600">
                                         Leia mais ->
                                     </a>

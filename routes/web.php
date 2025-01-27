@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 Auth::loginUsingId(1);
 
 Route::get('/newsinformation', function () {
-    $Informations = Information::all();
-    return view('newsinformation', compact('Informations'));
+    $informations = NewsInformation::all();    
+    return view('newsinformation', compact('informations'));
 });
 
 Route::get('/newsinformation/create', function () {
