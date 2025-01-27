@@ -32,4 +32,10 @@ class NewsInformationController extends Controller
     
         return redirect()->back()->with('success', 'Notícia criada com sucesso!');
     }
+    public function index()
+    {
+        $newsInformation = NewsInformation::all(); // Busca todas as notícias
+        return view('news.index', compact('newsInformation'));
+    }
+
 }    

@@ -5,6 +5,7 @@ use App\Models\Category;
 use App\Models\Equipment;
 use App\Models\Partner;
 use App\Models\Information;
+use App\Models\NewsInformation;
 use App\Http\Controllers\NewsInformationController;
 use Database\Seeders\InformationSeeder;
 use Illuminate\Http\Request;
@@ -23,6 +24,9 @@ Route::get('/newsinformation/create', function () {
 })->name('newsinformation.create');
 
 Route::post('/newsinformation/store', [NewsInformationController::class, 'store'])->name('newsinformation.store');
+
+Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
 
 Route::get('/about', function () {
     return view('about');
@@ -99,3 +103,4 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
