@@ -62,8 +62,9 @@ Route::get('/equipments/create', function () {
     return view('equipments.create', compact('equipments', 'brands'));
 })->name('equipments.create');
 
-Route::get('/equipments/{id}', function ($id) {
-    $equipment = Equipment::find($id);
+Route::get('/equipments/{reference}', function ($reference) {
+//    $equipment = Equipment::find($id);
+    $equipment = Equipment::where('reference' , $reference)->first();
     return view('equipments.show', compact('equipment'));
 });
 

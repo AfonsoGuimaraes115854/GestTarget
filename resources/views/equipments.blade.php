@@ -6,7 +6,6 @@
       <div class="mb-6">
         <h3 class="text-lg font-semibold text-gray-900 mb-2 flex justify-between">
           Categoria
-          <button class="text-gray-500 hover:text-gray-800">✕</button>
         </h3>
         <ul class="space-y-2 text-gray-700">
           <li>
@@ -28,14 +27,13 @@
       <div class="mb-6">
         <h3 class="text-lg font-semibold text-gray-900 mb-2 flex justify-between">
           Marca <span class="text-sm text-gray-500">({{ $brands->count() }})</span>
-          <button class="text-gray-500 hover:text-gray-800">✕</button>
         </h3>
         <ul class="space-y-2 text-gray-700">
           @foreach ($brands as $brand)
             <li>
               <label class="flex items-center">
                 <input type="checkbox" class="form-checkbox h-4 w-4 text-red-600 rounded" value="{{ $brand->id }}">
-                <span class="ml-2">{{ $brand->name }} ({{ $brand->equipments_count }})</span>
+                <span class="ml-2">{{ $brand->name }} ({{ $brand->c() }})</span>
               </label>
             </li>
           @endforeach
@@ -58,7 +56,7 @@
       class="w-full md:w-4/5 grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center gap-y-20 gap-x-14">
       @foreach ($equipments as $equipment)
         <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-          <a href="/equipments/{{ $equipment->id }}">
+          <a href="/equipments/{{ $equipment->reference }}">
             <img src="/images/equipments/{{ $equipment->image }}" alt="{{ $equipment->name }}" class="h-80 w-72 object-cover rounded-t-xl">
             <div class="px-4 py-3 w-72">
               <span class="text-gray-400 mr-3 uppercase text-xs">{{ $equipment->brand }}</span>

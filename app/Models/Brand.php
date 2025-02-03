@@ -9,4 +9,9 @@ class Brand extends Model
 {
     /** @use HasFactory<\Database\Factories\BrandFactory> */
     use HasFactory;
+    
+    public function c (){
+        return Brand::where('name',$this->brand)->count();
+    }
 }
+
