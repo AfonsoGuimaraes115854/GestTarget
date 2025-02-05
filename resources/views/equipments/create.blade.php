@@ -1,4 +1,5 @@
 <x-guestLayout>
+  <x-banner></x-banner>
 <div class="container mx-auto p-4">
   <h1 class="text-3xl font-bold text-[black] mb-6">Criar Produto</h1>
   <form action="{{ route('equipments.store') }}" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 gap-6">
@@ -12,7 +13,7 @@
       <select id="brand" name="brand" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#8c0327] focus:ring-[#8c0327] focus:ring-opacity-50 p-2" style="background-color: #f6f6f6;" required>
         <option value="">Selecionar Marca</option>
         @foreach ($brands as $brand)
-          <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+          <option value="{{ $brand->name }}">{{ $brand->name }}</option>
         @endforeach
       </select>
     </div>

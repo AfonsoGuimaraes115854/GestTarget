@@ -13,8 +13,8 @@
       <div class="w-full md:w-1/2 px-4">
         <h2 class="text-3xl font-bold mb-4">{{ $equipment->name }}</h2>
         <p class="text-gray-600 mb-2"><strong>Marca:</strong> {{ $equipment->brand }}</p>
-        <p class="text-gray-600 mb-2"><strong>Referência:</strong> {{ $equipment->ref }}</p>
-        <p class="text-gray-700 mb-6">{{ $equipment->description }}</p>
+        <p class="text-gray-600 mb-2"><strong>Referência:</strong> {{ $equipment->reference }}</p>
+        <p class="text-gray-700 mb-6"><strong>Descrição:</strong> {{ $equipment->description }}</p>
 
         <div class="flex items-center space-x-4 mb-6">
           <label for="quantity-{{ $equipment->id }}" class="text-gray-600 font-semibold">Quantidade:</label>

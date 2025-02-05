@@ -85,6 +85,7 @@ Route::post('/equipments/store', function (Request $request) {
         'image' => $request->input('image'),
         'brand' => $request->input('brand'),
     ]);
+    return redirect('/equipments/create')->banner('sucess');
 })->name('equipments.store');
 
 Route::get('/create-partner', function () {
