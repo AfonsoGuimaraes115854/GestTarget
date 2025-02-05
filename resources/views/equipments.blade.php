@@ -53,9 +53,9 @@
 
     <!-- Grid de Equipamentos -->
     <section id="Projects"
-      class="w-full md:w-4/5 grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center gap-y-16 gap-x-10">
+      class="gap-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center">
       @foreach ($equipments as $equipment)
-        <div class="w-64 h-64 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+        <div class="w-64 border-2 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
           <a href="/equipments/{{ $equipment->reference }}">
             <img src="/images/equipments/{{ $equipment->image }}" 
                  alt="{{ $equipment->name }}" 
