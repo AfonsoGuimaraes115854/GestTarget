@@ -25,8 +25,8 @@ Route::get('/newsinformation/create', function () {
 
 Route::post('/newsinformation/store', [NewsInformationController::class, 'store'])->name('newsinformation.store');
 
-Route::get('/news', [NewsController::class, 'index'])->name('news.index');
-Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
+Route::get('/newsinformation', [NewsInformationController::class, 'index'])->name('newsinformation.index');
+Route::get('/newsinformation/{id}', [NewsInformationController::class, 'show'])->name('newsinformation.show');
 
 Route::get('/about', function () {
     return view('about');
@@ -63,7 +63,6 @@ Route::get('/equipments/create', function () {
 })->name('equipments.create');
 
 Route::get('/equipments/{reference}', function ($reference) {
-//    $equipment = Equipment::find($id);
     $equipment = Equipment::where('reference' , $reference)->first();
     return view('equipments.show', compact('equipment'));
 });

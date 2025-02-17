@@ -1,4 +1,4 @@
-<x-guestLayout>
+<x-appLayout>
   <x-banner></x-banner>
 <div class="container mx-auto p-4">
   <h1 class="text-3xl font-bold text-[black] mb-6">Criar Produto</h1>
@@ -58,4 +58,4 @@ focus:ring-[#8c0327] focus:ring-opacity-50 p-2" style="background-color: #f6f6f6
     reader.readAsDataURL(event.target.files[0]);
   }
 </script>
-</x-guestLayout>
+</x-appLayout>

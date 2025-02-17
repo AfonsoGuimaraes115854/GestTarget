@@ -34,8 +34,16 @@ class NewsInformationController extends Controller
     }
     public function index()
     {
-        $newsInformation = NewsInformation::all(); // Busca todas as notícias
-        return view('news.index', compact('newsInformation'));
+        $newsInformation = NewsInformation::all();
+        return view('newsinformation', compact('newsInformation'));
     }
+
+    public function show($id)
+    {
+        $news = NewsInformation::findOrFail($id);
+        return view('newsinformation.show', compact('news'));
+    }
+    
+
 
 }    

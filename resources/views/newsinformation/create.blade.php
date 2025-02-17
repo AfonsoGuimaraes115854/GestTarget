@@ -1,8 +1,8 @@
-<x-guestLayout>
+<x-appLayout>
 <div class="container mx-auto p-4">
   <h1 class="text-3xl font-bold text-[black] mb-6">Criar Notícia</h1>
   <form action="{{ route('newsinformation.store') }}" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 gap-6">
-    @csrf <!-- Token de segurança para proteger o envio do formulário -->
+    @csrf
     <div class="p-2">
       <label for="name" class="sr-only">Nome Notícia</label>
       <input 
@@ -61,4 +61,4 @@
     </div>
   </form>
 </div>
-</x-guestLayout>
+</x-appLayout>
