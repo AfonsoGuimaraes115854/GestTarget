@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\NewsInformation;
+use Illuminate\Support\Str;
 
 class NewsInformationController extends Controller
 {
@@ -12,38 +13,41 @@ class NewsInformationController extends Controller
         $validated = $request->validate([
             'name' => 'required|min:3',
             'description' => 'required|min:3',
-            'image' => 'nullable|image',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'status' => 'required|in:active,inactive',
         ]);
-    
+
+        // Criar um slug único para a notícia
+        $slug = Str::slug($validated['name']) . '-' . time();
+
         // Processar a imagem, se fornecida
         $imagePath = null;
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('news_images', 'public');
+            $imageName = time() . '_' . $request->file('image')->getClientOriginalName();
+            $imagePath = $request->file('image')->storeAs('images/newsinformation', $imageName, 'public');
         }
-    
+
         // Criar o registro
         NewsInformation::create([
             'name' => $validated['name'],
             'description' => $validated['description'],
             'image' => $imagePath,
             'status' => $validated['status'],
+            'slug' => $slug, // Adicionando slug para melhor navegação
         ]);
-    
+
         return redirect()->back()->with('success', 'Notícia criada com sucesso!');
     }
+
     public function index()
     {
-        $newsInformation = NewsInformation::all();
+        $newsInformation = NewsInformation::orderBy('created_at', 'desc')->get();
         return view('newsinformation', compact('newsInformation'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $news = NewsInformation::findOrFail($id);
+        $news = NewsInformation::where('slug', $slug)->firstOrFail();
         return view('newsinformation.show', compact('news'));
     }
-    
-
-
-}    
+}

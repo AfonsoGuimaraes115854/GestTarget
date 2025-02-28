@@ -1,4 +1,4 @@
-<x-guestlayout>
+<x-guestLayout>
     <style>
     .image-hover {transition: opacity 0.3s ease;}
     .image-hover:hover {opacity: 0.5;}
@@ -11,4 +11,4 @@
             <a href="{{ $partner->url }}" target="_blank" title="{{ $partner->description }}"><img src="images/{{ $partner->image }}" alt="{{ $partner->name}}" class="rounded-lg p-4 shadow-md w-44 h-auto image-hover"></a>
         @endforeach
     </div>
-</x-guestlayout>
+</x-guestLayout>

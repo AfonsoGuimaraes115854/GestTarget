@@ -14,10 +14,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::loginUsingId(1);
 
-Route::get('/newsinformation', function () {
-    $informations = NewsInformation::all();    
-    return view('newsinformation', compact('informations'));
-});
+Route::get('/newsinformation', [NewsInformationController::class, 'index'])->name('newsinformation.index');
 
 Route::get('/newsinformation/create', function () {
     return view('newsinformation.create');
@@ -25,83 +22,47 @@ Route::get('/newsinformation/create', function () {
 
 Route::post('/newsinformation/store', [NewsInformationController::class, 'store'])->name('newsinformation.store');
 
-Route::get('/newsinformation', [NewsInformationController::class, 'index'])->name('newsinformation.index');
-Route::get('/newsinformation/{id}', [NewsInformationController::class, 'show'])->name('newsinformation.show');
+Route::get('/newsinformation/{slug}', function ($slug) {
+    $news = NewsInformation::where('slug', $slug)->firstOrFail();
+    return view('newsinformation.show', compact('news'));
+})->name('newsinformation.show');
 
-Route::get('/about', function () {
-    return view('about');
-});
-
-Route::get('/partners', function () {
-    $partners = Partner::all();
-    return view('partners', compact('partners'));
-});
-
-Route::get('/contactos', function () {
-    return view('contactos');
-});
-
-Route::get('/', function () {
-    $partners = Partner::all();
-    return view('welcome', compact('partners'));
-});
-
-Route::get('/serviços', function () {
-    return view('servicos');
-});
+Route::get('/about', fn() => view('about'));
+Route::get('/partners', fn() => view('partners', ['partners' => App\Models\Partner::all()]));
+Route::get('/contactos', fn() => view('contactos'));
+Route::get('/', fn() => view('welcome', ['partners' => App\Models\Partner::all()]));
+Route::get('/serviços', fn() => view('servicos'));
 
 Route::get('/equipments', function () {
-    $equipments = Equipment::all();
-    $brands = Brand::all();
-    return view('equipments', compact('equipments', 'brands'));
+    return view('equipments', [
+        'equipments' => App\Models\Equipment::all(),
+        'brands' => App\Models\Brand::all(),
+    ]);
 });
 
 Route::get('/equipments/create', function () {
-    $equipments = Equipment::all();
-    $brands = Brand::all();
-    return view('equipments.create', compact('equipments', 'brands'));
+    return view('equipments.create', [
+        'equipments' => App\Models\Equipment::all(),
+        'brands' => App\Models\Brand::all(),
+    ]);
 })->name('equipments.create');
 
 Route::get('/equipments/{reference}', function ($reference) {
-    $equipment = Equipment::where('reference' , $reference)->first();
+    $equipment = App\Models\Equipment::where('reference', $reference)->firstOrFail();
     return view('equipments.show', compact('equipment'));
-});
-
-Route::get('/brands', function () {
-    $brands = Brand::all();
-    return view('brands.index', compact('brands'));
-});
-
-Route::get('/sobre', function () {
-    return view('sobre');
-});
+})->name('equipments.show');
 
 Route::post('/equipments/store', function (Request $request) {
-    Equipment::create([
-        'name' => $request->input('name'),
-        'reference' => $request->input('reference'),
-        'description' => $request->input('description'),
-        'image' => $request->input('image'),
-        'brand' => $request->input('brand'),
-    ]);
-    return redirect('/equipments/create')->banner('sucess');
+    App\Models\Equipment::create($request->only(['name', 'reference', 'description', 'image', 'brand']));
+    return redirect()->route('equipments.create')->with('success', 'Equipamento criado com sucesso!');
 })->name('equipments.store');
 
-Route::get('/create-partner', function () {
-    return view('create-partner');
-});
+Route::get('/brands', fn() => view('brands.index', ['brands' => App\Models\Brand::all()]));
 
-Route::get('/organizations', function () {
-    echo "Olá, encontraste uma página em construção.";
-});
+Route::get('/sobre', fn() => view('sobre'));
+Route::get('/create-partner', fn() => view('create-partner'));
+Route::get('/organizations', fn() => response("Olá, encontraste uma página em construção."));
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
+    Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
 });
-

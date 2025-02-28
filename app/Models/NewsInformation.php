@@ -2,14 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class NewsInformation extends Model
 {
-    use HasFactory;
+    protected $fillable = ['name', 'description', 'image', 'slug'];
 
     protected $table = 'news_information';
-
-    protected $fillable = ['name', 'slug', 'description', 'image'];
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($news) {
+            $news->slug = Str::slug($news->name);
+        });
+    }
 }
+
