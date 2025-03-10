@@ -28,8 +28,7 @@
                         placeholder="Descrição do item" 
                         class="block w-full h-48 rounded-md border-gray-300 shadow-sm focus:border-[#8c0327] focus:ring-[#8c0327] focus:ring-opacity-50 p-2" 
                         style="background-color: #f6f6f6;"
-                        required>
-                    </textarea>
+                        required></textarea>
                 </div>
                 <div>
                     <x-label>Upload de Imagem</x-label>

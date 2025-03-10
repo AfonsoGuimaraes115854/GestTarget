@@ -21,20 +21,21 @@ class NewsInformationController extends Controller
         $slug = Str::slug($validated['name']) . '-' . time();
 
         // Processar a imagem, se fornecida
-        $imagePath = null;
+        $imageName = null;
         if ($request->hasFile('image')) {
-            $imageName = time() . '_' . $request->file('image')->getClientOriginalName();
-            $imagePath = $request->file('image')->storeAs('images/newsinformation', $imageName, 'public');
-        }
+            $imageName = time() . '_' . $request->file('image')->getClientOriginalName();            
+            $request->image->move(public_path('images/newsinformation'), $imageName);
+            
+        }            
 
         // Criar o registro
-        NewsInformation::create([
+        $news = NewsInformation::create([
             'name' => $validated['name'],
             'description' => $validated['description'],
-            'image' => $imagePath,
+            'image' => $imageName,
             'status' => $validated['status'],
             'slug' => $slug, // Adicionando slug para melhor navegação
-        ]);
+        ]);        
 
         return redirect()->back()->with('success', 'Notícia criada com sucesso!');
     }
