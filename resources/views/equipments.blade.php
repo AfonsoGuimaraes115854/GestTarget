@@ -1,6 +1,6 @@
 <x-guestLayout>
 <div class="flex mt-10">
-  <x-filterbar :brands="$brands"/>
+  <x-filterbar :categories="$categories" :brands="$brands"/>
   <div>
     <x-equipmentsstore :equipments="$equipments"/>
   </div>

@@ -1,6 +1,5 @@
 @props(['brands', 'categories'])
 
-
 <aside class="w-full md:w-1/5 bg-white shadow-md p-4 rounded-lg mb-6 md:mb-0">
 
   <div class="mb-6">
