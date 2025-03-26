@@ -1,25 +1,21 @@
-@props(['brands'])
+@props(['brands', 'categories'])
 
-<!-- Barra Lateral de Filtros -->
+
 <aside class="w-full md:w-1/5 bg-white shadow-md p-4 rounded-lg mb-6 md:mb-0">
-  <!-- Filtro: Categorias -->
+
   <div class="mb-6">
     <h3 class="text-lg font-semibold text-gray-900 mb-2 flex justify-between cursor-pointer" onclick="toggleSection('categories')">
       Categorias <span id="categories-icon">▼</span>
     </h3>
     <ul id="categories" class="space-y-2 text-gray-700">
-      <li>
-        <label class="flex items-center">
-          <input type="checkbox" class="form-checkbox h-4 w-4 text-red-600 rounded">
-          <span class="ml-2">Ultrasons</span>
-        </label>
-      </li>
-      <li>
-        <label class="flex items-center">
-          <input type="checkbox" class="form-checkbox h-4 w-4 text-red-600 rounded">
-          <span class="ml-2">Alicates</span>
-        </label>
-      </li>
+      @foreach ($categories as $category)
+        <li>
+          <label class="flex items-center">
+            <input type="checkbox" class="form-checkbox h-4 w-4 text-red-600 rounded" value="{{ $category->id }}">
+            <span class="ml-2">{{ $category->name }}</span>
+          </label>
+        </li>
+      @endforeach
     </ul>
   </div>
 

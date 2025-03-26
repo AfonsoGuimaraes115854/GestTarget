@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PartnerSeeder::class,
             EquipmentSeeder::class,
-            BrandSeeder::class
+            BrandSeeder::class,
+            CategoriesSeeder::class
         ]);
     }
 }

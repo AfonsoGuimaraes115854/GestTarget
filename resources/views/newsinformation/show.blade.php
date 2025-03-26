@@ -18,8 +18,7 @@
                 </div>
             </div>
             <div class="w-full md:w-1/3 lg:w-3/5 mt-12 md:mt-0 flex justify-center">
-                <img src="{{ asset($news->image) }}" 
-                     alt="Imagem de {{ $news->name }}" 
+                <img src="{{ asset('images/newsinformation/' . $news->image) }}" alt="{{ $news->name }}" 
                      class="max-w-xs md:max-w-sm lg:max-w-md rounded-lg shadow-lg"/>
             </div>
         </div>

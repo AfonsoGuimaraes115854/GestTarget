@@ -13,7 +13,7 @@
                 @foreach($newsInformation as $news)
                     <div class="w-full max-w-full mb-8 sm:w-1/2 px-4 lg:w-1/3 flex flex-col">
                         <!-- Imagem da notícia -->
-                        <img src="{{ asset('images/newsinformation/' . $news->image) }}" alt="{{ $news->name }}" 
+                        <img src="{{ asset('images/newsinformation/' . $news->image) }}" alt="{{ $news->name }}"
                         class="object-cover object-center w-full h-48 rounded-lg shadow-md">
                         <div class="flex flex-col flex-grow border border-red-300 bg-white shadow-lg rounded-lg overflow-hidden">
                             <div class="p-6 flex flex-col justify-between flex-grow">

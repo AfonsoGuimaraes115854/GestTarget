@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Equipment extends Model
 {
     use HasFactory;
-
+    protected $table = "equipments";
     /**
      * The attributes that are mass assignable.
      *
@@ -17,6 +17,7 @@ class Equipment extends Model
     protected $fillable = [
         'name',
         'brand',
+        'category',
         'reference',
         'description',
         'image',

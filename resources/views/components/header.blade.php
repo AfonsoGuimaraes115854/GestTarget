@@ -36,16 +36,16 @@
     <div class="max-w-screen-xl mx-auto p-2">
       <ul class="flex justify-center space-x-4 relative">
         <li>
-          <a href="/newsinformation" title="Noticías" class="block py-2 px-3 text-red-600 hover:underline decoration-red-600">Noticias</a>
+          <a href="/sobre" title="Sobre" class="block py-2 px-3 text-red-600 hover:underline decoration-red-600">Sobre</a>
         </li>
         <li>
-          <a href="/sobre" title="Sobre" class="block py-2 px-3 text-red-600 hover:underline decoration-red-600">Sobre</a>
+          <a href="/equipments" title="Equipamentos" class="block py-2 px-3 text-red-600 hover:underline decoration-red-600">Equipamentos</a>
         </li>
         <li>
           <a href="/partners" title="Parceiros" class="block py-2 px-3 text-red-600 hover:underline decoration-red-600">Parceiros</a>
         </li>
         <li>
-          <a href="/equipments" title="Equipamentos" class="block py-2 px-3 text-red-600 hover:underline decoration-red-600">Equipamentos</a>
+          <a href="/newsinformation" title="Noticías" class="block py-2 px-3 text-red-600 hover:underline decoration-red-600">Noticias</a>
         </li>
         <li>
           <a href="/contactos" title="Contactos" class="block py-2 px-3 text-red-600 hover:underline decoration-red-600">Contactos</a>
