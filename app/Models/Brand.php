@@ -13,5 +13,6 @@ class Brand extends Model
     public function c (){
         return Brand::where('name',$this->brand)->count();
     }
+     protected $guarded = [];
 }
 
