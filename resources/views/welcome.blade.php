@@ -1,61 +1,54 @@
 <x-guestLayout>
-    <!-- Tela de Carregamento (Overlay) -->
-    <div id="loading-screen" class="fixed inset-0 bg-white flex justify-center items-center z-50">
-        <div class="flex flex-col items-center text-black">
-            <!-- Logotipo que gira -->
-            <img id="logo" src="images/ttsimple.png" alt="Logo" class="w-32 h-32 mb-4 animate-spin-slow">
-            <!-- Contador de progresso -->
-            <p id="progress" class="text-xl">0%</p>
-        </div>
-    </div>
 
-    <!-- Seção de Vídeo -->
-    <div id="main-content" class="w-full mx-auto flex opacity-0 transition-opacity duration-1000">
-        <div class="relative w-full h-full overflow-hidden" style="clip-path: polygon(0 0%, 100% 0%, 75% 100%, 0% 100%);">
+    <!-- Header com logo e botão de menu (apenas mobile) -->
+    <header class="w-full px-4 py-4 flex justify-between items-center md:hidden bg-white shadow-md fixed top-0 left-0 z-50">
+        <img src="/images/ttsimple.png" alt="Logo" class="h-10 w-auto">
+        <button id="menu-toggle" class="text-gray-800 focus:outline-none">
+            <!-- Ícone de menu hamburguer -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
+    </header>
+
+    <!-- Espaço para compensar o header fixo no mobile -->
+    <div class="h-[64px] md:hidden"></div>
+
+    <!-- Seção de Vídeo (oculto em mobile) -->
+    <div id="main-content" class="w-full mx-auto flex flex-col md:flex-row opacity-100 transition-opacity duration-1000">
+        <div class="hidden md:block relative w-full md:w-1/2 h-auto overflow-hidden"
+             style="clip-path: polygon(0 0%, 100% 0%, 75% 100%, 0% 100%);">
             <video autoplay muted loop class="w-full h-full object-cover">
                 <source src="videos/testevideo.mp4" type="video/mp4">
             </video>
         </div>
 
-        <div class="w-full md:w-1/2 flex flex-col items-start justify-center px-6 md:px-10 py-16">
+        <div class="w-full md:w-1/2 flex flex-col items-start justify-center px-6 md:px-10 py-10 md:py-16">
             <p class="text-4xl md:text-6xl font-bold leading-tight text-gray-900">
                 <span class="text-black drop-shadow-md">Unpredictable</span><br>
                 <span class="text-red-600 drop-shadow-lg">Target</span>
             </p>
-            <br>
-            <a href="/sobre" title="Sobre nós" class="mt-6 bg-black text-white text-lg font-semibold px-8 py-4 rounded-full hover:bg-red-600 hover:scale-105 transition-transform duration-300 ease-in-out shadow-md">
+            <a href="/sobre" title="Sobre nós" class="mt-6 bg-black text-white text-lg font-semibold px-6 py-3 md:px-8 md:py-4 rounded-full hover:bg-red-600 hover:scale-105 transition-transform duration-300 shadow-md">
                 Sobre Nós
             </a>
         </div>
     </div>
 
     <!-- Seção de Parceiros -->
-    <section class="flex flex-col gap-10 py-16">
-        <div class="flex gap-4 flex-col px-4 h-full relative z-50 md:w-[85%] w-[95%] mx-auto">
-            <div class="flex items-center gap-4"></div>
-            <div id="scroll-container" class="scroll-linear flex flex-1 overflow-x-scroll no-scrollbar relative">
-                <ul class="flex gap-0 animate-scroll">
+    <section class="py-16 w-full">
+        <div class="w-[95%] md:w-[85%] mx-auto">
+            <div id="scroll-container" class="flex overflow-x-auto no-scrollbar">
+                <ul class="flex gap-6 min-w-max animate-scroll">
                     @foreach ($partners as $partner)
-                        <li>
-                            @if ($partner->smallimage)
+                        @if ($partner->smallimage)
+                            <li>
                                 <img
                                     src="/images/{{ $partner->smallimage }}"
-                                    class="bg-app_white min-w-[200px] h-[100px] shrink-0"
+                                    class="bg-white min-w-[150px] md:min-w-[200px] h-[80px] md:h-[100px] object-contain"
                                     alt="{{ $partner->name }}"
                                 />
-                            @endif
-                        </li>
-                    @endforeach
-                    @foreach ($partners as $partner)
-                        <li>
-                            @if ($partner->smallimage)
-                                <img
-                                    src="/images/{{ $partner->smallimage }}"
-                                    class="bg-app_white min-w-[200px] h-[100px] shrink-0"
-                                    alt="{{ $partner->name }}"
-                                />
-                            @endif
-                        </li>
+                            </li>
+                        @endif
                     @endforeach
                 </ul>
             </div>
@@ -63,26 +56,25 @@
     </section>
 
     <!-- Seção de Últimas Notícias -->
-    <section class="flex flex-col gap-10 py-16">
-        <div class="flex gap-4 flex-col px-4 h-full relative z-50 md:w-[85%] w-[95%] mx-auto">
-            <h2 class="text-3xl font-bold text-center text-gray-800">Últimas Notícias</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <section class="py-16 w-full">
+        <div class="w-[95%] md:w-[85%] mx-auto">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Últimas Notícias</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 @foreach ($newsInformation as $news)
-                    <div class="news-item bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl opacity-0">
-                        <!-- Envolvendo a imagem com o link para redirecionar -->
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl">
                         <a href="{{ route('newsinformation.show', ['slug' => $news->slug]) }}">
                             <img 
                                 src="{{ asset('images/newsinformation/' . $news->image) }}" 
                                 alt="{{ $news->name }}" 
-                                class="w-full h-48 object-cover rounded-t-lg"
+                                class="w-full h-48 object-cover"
                             />
                         </a>
                         <div class="p-4">
                             <h3 class="text-xl font-semibold text-gray-800 mb-2">{{ $news->title }}</h3>
-                            <p class="text-gray-600 text-sm mt-2">{{ Str::limit($news->slug, 80) }}</p>
+                            <p class="text-gray-600 text-sm">{{ Str::limit($news->slug, 80) }}</p>
                             <a href="{{ route('newsinformation.show', ['slug' => $news->slug]) }}"
                                class="inline-block text-red-600 font-semibold hover:underline mt-3">
-                               Leia mais →
+                               Leia mais → 
                             </a>
                         </div>
                     </div>
@@ -91,73 +83,30 @@
         </div>
     </section>
 
-    <script>
-        // Função para remover o loading screen e mostrar a página após o carregamento
-        window.addEventListener('load', function() {
-            // Variáveis para o progresso
-            const loadingScreen = document.getElementById('loading-screen');
-            const progressText = document.getElementById('progress');
-            const logo = document.getElementById('logo');
-            const mainContent = document.getElementById('main-content');
-            const partnerItems = document.querySelectorAll('.partner-item');
-            const newsItems = document.querySelectorAll('.news-item');
-            let progress = 0;
-            
-            // Função para atualizar a barra de progresso e logotipo
-            const interval = setInterval(function() {
-                progress += 1;
-                progressText.textContent = progress + '%';
-                if (progress === 100) {
-                    clearInterval(interval);
-                    // Após o progresso atingir 100%, removemos a tela de carregamento
-                    loadingScreen.style.display = 'none';
-                    // Torna o conteúdo principal visível suavemente
-                    mainContent.classList.remove('opacity-0');
-                    mainContent.classList.add('opacity-100');
-                    // Torna as imagens dos parceiros e notícias visíveis suavemente
-                    partnerItems.forEach(item => {
-                        item.classList.remove('opacity-0');
-                        item.classList.add('opacity-100');
-                    });
-                    newsItems.forEach(item => {
-                        item.classList.remove('opacity-0');
-                        item.classList.add('opacity-100');
-                    });
-                }
-            }, 10); // Atualiza o progresso a cada 50ms
-
-            // Animação de rotação do logotipo
-            logo.classList.add('animate-spin-slow');
-        });
-    </script>
-
     <style>
-        /* Definindo a animação de rotação suave para o logo */
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .animate-spin-slow {
-            animation: spin 5s linear infinite;
-        }
-
-        /* Movimento contínuo das imagens dos parceiros */
         @keyframes scrollPartnerImages {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         .animate-scroll {
             animation: scrollPartnerImages 30s linear infinite;
         }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
+
+    <!-- Menu toggle script (placeholder para menu funcional futuramente) -->
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            alert('Menu de navegação (placeholder). Aqui pode-se abrir um menu lateral ou dropdown.');
+        });
+    </script>
 </x-guestLayout>

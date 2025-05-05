@@ -1,6 +1,18 @@
-<footer class="flex flex-col items-center space-y-10 px-6 py-12 bg-gray-900 text-white">
-    <!-- NewsLetter Subscription Section -->
-    <div class="block lg:max-w-lg mx-auto text-center">
+<footer class="mt-20 flex flex-col lg:flex-row justify-between items-start px-6 py-12 bg-gray-900 text-white space-y-10 lg:space-y-0">
+    <!-- Coluna Esquerda: Company Links -->
+    <div class="w-full lg:w-1/3 text-left">
+        <h4 class="text-lg font-semibold text-gray-300 mb-2">TargetTools</h4>
+        <div class="w-16 h-1 bg-red-500 mb-4"></div>
+        <ul class="space-y-2 text-sm">
+            <li><a href="/sobre" class="text-gray-400 hover:text-red-500 transition">Sobre Nós</a></li>
+            <li><a href="/termos-e-condicoes" class="text-gray-400 hover:text-red-500 transition">Termos & Condições</a></li>
+            <li><a href="/politica-de-privacidade" class="text-gray-400 hover:text-red-500 transition">Política de Privacidade</a></li>
+            <li><a href="/contactos" class="text-gray-400 hover:text-red-500 transition">Contactos</a></li>
+        </ul>
+    </div>
+
+    <!-- Coluna Central: Newsletter -->
+    <div class="w-full lg:w-1/3 text-center">
         <h3 class="font-manrope font-semibold text-3xl lg:text-4xl text-gray-100 mb-6">
             Inscreva-se na NewsLetter
         </h3> 
@@ -18,8 +30,8 @@
         </div>
     </div>
 
-    <!-- Social Media Icons -->
-    <div class="flex justify-center space-x-8 text-gray-300">
+    <!-- Coluna Direita: Redes Sociais -->
+    <div class="w-full lg:w-1/3 flex justify-center lg:justify-end space-x-8 text-gray-300">
         <a href="https://www.facebook.com/profile.php?id=61551537224728" target="_blank" rel="noopener noreferrer" class="hover:text-red-600 transition duration-300">
             <img src="https://img.icons8.com/fluent/30/000000/facebook-new.png" alt="Facebook" />
         </a>
@@ -31,6 +43,8 @@
         </a>
     </div>
 
-    <!-- Copyright Text -->
-    <p class="text-center text-gray-400 text-sm mt-8">&copy; Target Tools Unpredictable Target, Unip. Lda</p>
+    <!-- Rodapé -->
+    <div class="w-full text-center mt-8 text-gray-400 text-sm lg:col-span-3">
+        &copy; Target Tools Unpredictable Target, Unip. Lda
+    </div>
 </footer>
