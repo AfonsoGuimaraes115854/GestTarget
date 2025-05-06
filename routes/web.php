@@ -14,6 +14,7 @@ use App\Models\Image;
 
 use App\Http\Controllers\NewsInformationController;
 use App\Http\Controllers\EquipmentController;
+use App\Http\Controllers\CarrinhoController;
 
 // ------------------------------------------
 // 👤 AUTENTICAÇÃO PARA TESTES (REMOVER EM PRODUÇÃO)
@@ -90,6 +91,16 @@ Route::view('/serviços', 'servicos');
 Route::view('/sobre', 'sobre');
 Route::view('/termos-e-condicoes', 'termos-e-condicoes');
 Route::view('/politica-de-privacidade', 'politica-de-privacidade');
+
+// ------------------------------------------
+// 🛒 ROTAS DO CARRINHO DE COMPRAS
+// ------------------------------------------
+Route::prefix('carrinho')->name('carrinho.')->group(function () {
+    Route::post('/adicionar', [CarrinhoController::class, 'addToCart'])->name('adicionar');
+    Route::get('/', [CarrinhoController::class, 'showCart'])->name('exibir');
+    Route::get('/remover/{productId}', [CarrinhoController::class, 'removeFromCart'])->name('remover');
+    Route::post('/atualizar', [CarrinhoController::class, 'updateQuantity'])->name('atualizar');
+});
 
 // ------------------------------------------
 // 🔐 ROTA PROTEGIDA (AUTENTICADO)
