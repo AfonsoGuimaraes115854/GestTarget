@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
+use App\Mail\PedidosMail;
+
+
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Equipment;
@@ -15,6 +18,7 @@ use App\Models\Image;
 use App\Http\Controllers\NewsInformationController;
 use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\CarrinhoController;
+use App\Http\Controllers\PedidosController;
 
 // ------------------------------------------
 // 👤 AUTENTICAÇÃO PARA TESTES (REMOVER EM PRODUÇÃO)
@@ -108,3 +112,5 @@ Route::prefix('carrinho')->name('carrinho.')->group(function () {
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
 });
+
+Route::post('/pedidos/email', [PedidosController::class, 'sendEmail'])->name('send.email');

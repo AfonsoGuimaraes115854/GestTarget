@@ -94,7 +94,8 @@
                     </p>
                 </div>
                 <div class="mt-10">
-                    <form>
+                    <form action="/pedidos/email" method="POST">   
+                        @csrf 
                         <div class="flex space-x-4">
                             <div class="w-1/2">
                                 <label for="primeiro_nome" class="block text-sm font-medium text-gray-700">Primeiro Nome</label>
