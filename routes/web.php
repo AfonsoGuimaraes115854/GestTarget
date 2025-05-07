@@ -19,7 +19,7 @@ use App\Http\Controllers\CarrinhoController;
 // ------------------------------------------
 // 👤 AUTENTICAÇÃO PARA TESTES (REMOVER EM PRODUÇÃO)
 // ------------------------------------------
-Auth::loginUsingId(1); // Força login com o usuário ID 1
+//Auth::loginUsingId(1); // Força login com o usuário ID 1
 
 // ------------------------------------------
 // 🏠 PÁGINA INICIAL
