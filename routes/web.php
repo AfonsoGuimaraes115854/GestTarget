@@ -19,11 +19,12 @@ use App\Http\Controllers\NewsInformationController;
 use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\PedidosController;
+use App\Http\Controllers\DashboardController;
 
 // ------------------------------------------
 // 👤 AUTENTICAÇÃO PARA TESTES (REMOVER EM PRODUÇÃO)
 // ------------------------------------------
-//Auth::loginUsingId(1); // Força login com o usuário ID 1
+Auth::loginUsingId(1); // Força login com o usuário ID 1
 
 // ------------------------------------------
 // 🏠 PÁGINA INICIAL
@@ -110,7 +111,7 @@ Route::prefix('carrinho')->name('carrinho.')->group(function () {
 // 🔐 ROTA PROTEGIDA (AUTENTICADO)
 // ------------------------------------------
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
-    Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
 Route::post('/pedidos/email', [PedidosController::class, 'sendEmail'])->name('send.email');

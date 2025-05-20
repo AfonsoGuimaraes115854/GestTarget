@@ -9,7 +9,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 px-10 pt-10 pb-32">
         <!-- Sidebar -->
         <aside class="lg:col-span-3 space-y-6">
-            @foreach ([
+            @foreach ([ 
                 'Parceiros' => [
                     ['Criar', '/partners/create'],
                     ['Editar', '/partners/edit'],
@@ -20,12 +20,7 @@
                     ['Editar', '/equipments/edit'],
                     ['Eliminar', '/equipments/delete']
                 ],
-                'Marcas' => [
-                    ['Criar', '/brands/create'],
-                    ['Editar', '/brands/edit'],
-                    ['Eliminar', '/brands/delete']
-                ],
-                'Noticias' => [
+                'Noticías' => [
                     ['Criar', '/newsinformation/create'],
                     ['Editar', '/newsinformation/edit'],
                     ['Eliminar', '/newsinformation/delete']
@@ -59,9 +54,50 @@
                     <p class="text-3xl font-bold text-red-600">{{ $activeEquipments ?? '0' }}</p>
                 </div>
                 <div class="bg-white rounded-xl shadow-md p-6">
-                    <h4 class="text-gray-600">Marcas Registradas</h4>
+                    <h4 class="text-gray-600">Noticías Registradas</h4>
                     <p class="text-3xl font-bold text-red-600">{{ $brandCount ?? '0' }}</p>
                 </div>
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h4 class="text-gray-600">Parceiros Ativos</h4>
+                    <p class="text-3xl font-bold text-green-600">{{ $activePartners ?? '0' }}</p>
+                </div>
+            </div>
+            <!-- Equipamentos Criados -->
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Equipamentos Criados</h3>
+            
+                @if($equipments->isEmpty())
+                    <p class="text-gray-500">Nenhum equipamento criado ainda.</p>
+                @else
+                    <table class="min-w-full bg-white border border-gray-200 rounded-md">
+                        <thead>
+                            <tr class="text-left border-b">
+                                <th class="px-4 py-2 text-gray-600">#</th>
+                                <th class="px-4 py-2 text-gray-600">Nome</th>
+                                <th class="px-4 py-2 text-gray-600">Categoria</th>
+                                <th class="px-4 py-2 text-gray-600">Status</th>
+                                <th class="px-4 py-2 text-gray-600">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($equipments as $equipment)
+                                <tr class="border-b">
+                                    <td class="px-4 py-2">{{ $equipment->id }}</td>
+                                    <td class="px-4 py-2">{{ $equipment->name }}</td>
+                                    <td class="px-4 py-2">{{ $equipment->category->name ?? 'Sem categoria' }}</td>
+                                    <td class="px-4 py-2">
+                                        <span class="px-3 py-1 text-xs font-medium rounded-full {{ $equipment->status == 'ativo' ? 'bg-green-500 text-white' : 'bg-red-500 text-white' }}">
+                                            {{ ucfirst($equipment->status) }}
+                                        </span>
+                                    </td>
+                                    <td class="px-4 py-2">
+                                        <a href="{{ route('equipments.show', $equipment->reference) }}" class="text-blue-600 hover:text-blue-800">Ver</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @endif
             </div>
 
             <!-- Recent Activity -->
@@ -82,7 +118,6 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <a href="/partners/create" class="bg-red-600 text-white py-3 px-4 rounded-xl text-center hover:bg-red-700 transition">+ Parceiro</a>
                     <a href="/equipments/create" class="bg-red-600 text-white py-3 px-4 rounded-xl text-center hover:bg-red-700 transition">+ Equipamento</a>
-                    <a href="/brands/create" class="bg-red-600 text-white py-3 px-4 rounded-xl text-center hover:bg-red-700 transition">+ Marca</a>
                     <a href="/newsinformation/create" class="bg-red-600 text-white py-3 px-4 rounded-xl text-center hover:bg-red-700 transition">+ Noticías</a>
                 </div>
             </div>
