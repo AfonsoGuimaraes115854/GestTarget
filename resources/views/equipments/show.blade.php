@@ -21,17 +21,27 @@
           <input 
             type="number" 
             id="quantity-{{ $equipment->id }}" 
-            name="quantity" 
+            name="quantity_display" 
             min="1" 
             value="1" 
-            class="w-20 p-2 border border-gray-300 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-red-500">
+            class="w-20 p-2 border border-gray-300 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-red-500"
+            onchange="document.getElementById('formQuantity-{{ $equipment->id }}').value = this.value;">
         </div>
 
         <div class="flex space-x-4 mb-6">
-          <button
-            class="bg-red-600 flex gap-2 items-center text-white px-6 py-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
-            Adicionar ao Carrinho
-          </button>
+          {{-- Formulário para adicionar ao carrinho --}}
+          <form action="{{ route('carrinho.adicionar') }}" method="POST">
+            @csrf
+            <input type="hidden" name="equipment_id" value="{{ $equipment->id }}">
+            <input type="hidden" name="quantity" value="1" id="formQuantity-{{ $equipment->id }}">
+
+            <button
+              type="submit"
+              class="bg-red-600 flex gap-2 items-center text-white px-6 py-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+              Adicionar ao Carrinho
+            </button>
+          </form>
+
           <button
             class="bg-gray-200 flex gap-2 items-center text-gray-800 px-6 py-2 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
             Orçamento

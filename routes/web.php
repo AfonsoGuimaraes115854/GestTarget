@@ -91,7 +91,7 @@ Route::post('/image_upload/store', function (Request $request) {
 // ------------------------------------------
 Route::view('/about', 'about');
 Route::view('/partners', 'partners', ['partners' => Partner::all()]);
-Route::view('/contactos', 'contactos');
+Route::view('/contactos', 'contactos')->name('contactos');
 Route::view('/serviços', 'servicos');
 Route::view('/sobre', 'sobre');
 Route::view('/termos-e-condicoes', 'termos-e-condicoes');
@@ -106,6 +106,7 @@ Route::prefix('carrinho')->name('carrinho.')->group(function () {
     Route::get('/remover/{productId}', [CarrinhoController::class, 'removeFromCart'])->name('remover');
     Route::post('/atualizar', [CarrinhoController::class, 'updateQuantity'])->name('atualizar');
 });
+
 
 // ------------------------------------------
 // 🔐 ROTA PROTEGIDA (AUTENTICADO)

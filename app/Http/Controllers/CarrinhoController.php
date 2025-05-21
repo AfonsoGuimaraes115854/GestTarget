@@ -3,81 +3,74 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Equipment;
 
 class CarrinhoController extends Controller
 {
-    // Adicionar produto ao carrinho
-    public function carrinho(Request $request)
+    // Adicionar item ao carrinho
+    public function addToCart(Request $request)
     {
-        $productId = $request->input('product_id');  // ID do produto
-        $quantity = $request->input('quantity', 1);   // Quantidade (padrão: 1)
+        $equipment = Equipment::findOrFail($request->equipment_id);
+        $quantity = max(1, (int) $request->quantity);
 
-        // Recupera o carrinho da sessão
-        $carrinho = session()->get('carrinho', []);
+        $cart = session()->get('cart', []);
 
-        // Verifica se o produto já está no carrinho
-        if (isset($carrinho[$productId])) {
-            $carrinho[$productId]['quantity'] += $quantity;  // Incrementa a quantidade
+        if (isset($cart[$equipment->id])) {
+            $cart[$equipment->id]['quantity'] += $quantity;
         } else {
-            // Adiciona novo produto ao carrinho
-            $carrinho[$productId] = [
-                'name' => $request->input('product_name'),
-                'price' => $request->input('product_price'),
+            $cart[$equipment->id] = [
+                'name' => $equipment->name,
+                'brand' => $equipment->brand,
+                'reference' => $equipment->reference,
+                'image' => $equipment->image,
                 'quantity' => $quantity,
             ];
         }
 
-        // Atualiza o carrinho na sessão
-        session()->put('carrinho', $carrinho);
+        session()->put('cart', $cart);
+        $this->updateCartCount($cart); // 👉 Atualiza o total
 
-        // Atualiza o contador de itens
-        session()->put('cart_count', array_sum(array_column($carrinho, 'quantity')));
-
-        return redirect()->back()->with('success', 'Produto adicionado ao carrinho!');
+        return redirect()->route('carrinho.exibir')->with('success', 'Produto adicionado ao carrinho!');
     }
 
-    // Exibir o carrinho
     public function showCart()
     {
-        $carrinho = session()->get('carrinho', []);
-        return view('carrinho', compact('carrinho'));
+        $cart = session()->get('cart', []);
+        return view('cart.index', compact('cart'));
     }
 
-    // Remover produto do carrinho
     public function removeFromCart($productId)
     {
-        $carrinho = session()->get('carrinho', []);
+        $cart = session()->get('cart', []);
 
-        if (isset($carrinho[$productId])) {
-            unset($carrinho[$productId]);
+        if (isset($cart[$productId])) {
+            unset($cart[$productId]);
+            session()->put('cart', $cart);
+            $this->updateCartCount($cart); // 👉 Atualiza o total
+            return redirect()->route('carrinho.exibir')->with('success', 'Produto removido do carrinho!');
         }
 
-        session()->put('carrinho', $carrinho);
-        session()->put('cart_count', array_sum(array_column($carrinho, 'quantity')));
-
-        return redirect()->back()->with('success', 'Produto removido do carrinho!');
+        return redirect()->route('carrinho.exibir')->with('error', 'Produto não encontrado no carrinho.');
     }
 
-    // Atualizar quantidade de um produto no carrinho
     public function updateQuantity(Request $request)
     {
-        $productId = $request->input('product_id');
-        $quantity = $request->input('quantity');
+        $cart = session()->get('cart', []);
 
-        $carrinho = session()->get('carrinho', []);
-
-        if (isset($carrinho[$productId])) {
-            // Atualiza a quantidade (remove se for 0 ou menor)
-            if ($quantity > 0) {
-                $carrinho[$productId]['quantity'] = $quantity;
-            } else {
-                unset($carrinho[$productId]);
-            }
+        if (isset($cart[$request->product_id])) {
+            $cart[$request->product_id]['quantity'] = $request->quantity;
+            session()->put('cart', $cart);
+            $this->updateCartCount($cart); // 👉 Atualiza o total
+            return redirect()->route('carrinho.exibir')->with('success', 'Quantidade atualizada com sucesso!');
         }
 
-        session()->put('carrinho', $carrinho);
-        session()->put('cart_count', array_sum(array_column($carrinho, 'quantity')));
+        return redirect()->route('carrinho.exibir')->with('error', 'Produto não encontrado no carrinho.');
+    }
 
-        return redirect()->back()->with('success', 'Quantidade atualizada com sucesso!');
+    // 🔁 Atualiza a contagem total de itens no carrinho
+    private function updateCartCount($cart)
+    {
+        $totalItems = array_sum(array_column($cart, 'quantity'));
+        session()->put('cart_count', $totalItems);
     }
 }

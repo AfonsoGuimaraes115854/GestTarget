@@ -39,22 +39,26 @@
           <a href="/equipments" title="Equipamentos" class="block py-2 px-3 text-red-600 hover:underline decoration-red-600">Equipamentos</a>
         </li>
         <li>
-          <a href="/partners" title="Parceiros" class="block py-2 px-3 text-red-600 hover:underline decoration-red-600">Parceiros</a>
+          <a href="/newsinformation" title="Noticías" class="block py-2 px-3 text-red-600 hover:underline decoration-red-600">Noticias</a>
         </li>
         <li>
-          <a href="/newsinformation" title="Noticías" class="block py-2 px-3 text-red-600 hover:underline decoration-red-600">Noticias</a>
+          <a href="/partners" title="Parceiros" class="block py-2 px-3 text-red-600 hover:underline decoration-red-600">Parceiros</a>
         </li>
         <li>
           <a href="/contactos" title="Contactos" class="block py-2 px-3 text-red-600 hover:underline decoration-red-600">Contactos</a>
         </li>
         
-        <!-- Carrinho de Compras -->
         <li class="relative">
-          <a href="/carrinho" title="Carrinho" class="block py-2 px-3 text-red-600 hover:underline decoration-red-600">
+          <a href="{{ route('carrinho.exibir') }}" title="Carrinho" class="relative block py-2 px-3 text-red-600 hover:underline decoration-red-600">
             <img src="/images/cart-icon.svg" alt="Carrinho de Compras" class="h-8">
-            <!-- Contador de Itens -->
-            <span class="absolute top-0 right-0 rounded-full bg-red-600 text-white text-xs px-2 py-1">
-              {{ session('cart_count') ?? 0 }}
+          
+            @php
+              $cart = session('cart', []);
+              $cartCount = array_sum(array_column($cart, 'quantity'));
+            @endphp
+
+            <span class="absolute -top-1 -right-1 flex items-center justify-center h-5 w-5 rounded-full {{ $cartCount > 0 ? 'bg-red-600' : 'bg-gray-400' }} text-white text-xs font-bold">
+              {{ $cartCount }}
             </span>
           </a>
         </li>
