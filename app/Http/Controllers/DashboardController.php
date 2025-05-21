@@ -14,7 +14,8 @@ class DashboardController extends Controller
         $activeEquipments = Equipment::where('status', 'ativo')->count();
 
         // Contando os parceiros ativos
-        $activePartners = Partner::where('status', 'ativo')->count();
+        $activePartners = Partner::all()->count();
+
 
         // Contagem total de parceiros
         $totalPartners = Partner::count();
