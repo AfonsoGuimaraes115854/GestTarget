@@ -55,6 +55,33 @@
         </div>
     </section>
 
+    <section class="py-16 w-full">
+        <div class="w-[95%] md:w-[85%] mx-auto">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Últimos Lançamentos</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                @foreach ($equipments as $equipment)
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                        <a href="{{ route('equipments.show', ['reference' => $equipment->reference]) }}">
+                            <img 
+                                src="{{ asset('images/equipments/' . $equipment->image) }}" 
+                                alt="{{ $equipment->name }}" 
+                                class="w-full h-48 object-cover"
+                            />
+                        </a>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">{{ $equipment->name }}</h3>
+                            <p class="text-gray-600 text-sm">{{ Str::limit($equipment->short_description, 80) }}</p>
+                            <a href="{{ route('equipments.show', ['reference' => $equipment->reference]) }}"
+                               class="inline-block text-red-600 font-semibold hover:underline mt-3">
+                               Ver mais → 
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
     <!-- Seção de Últimas Notícias -->
     <section class="py-16 w-full">
         <div class="w-[95%] md:w-[85%] mx-auto">

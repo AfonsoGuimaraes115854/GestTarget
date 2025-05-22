@@ -22,7 +22,7 @@
                             <div class="pro-data w-full max-w-sm">
                                 <h5 class="font-semibold text-xl leading-8 text-black">{{ $product['name'] }}</h5>
                                 <p class="font-normal text-lg leading-8 text-gray-500 my-2">Marca: {{ $product['brand'] ?? 'N/A' }}</p>
-                                <p class="font-normal text-lg leading-8 text-gray-500 my-2">Referência: {{ $product['reference'] ?? 'N/A' }}</p>
+                                <p class="font-normal text-lg leading-8 text-gray-500 my-2">Referência: {{ $product['reference'] ?? 'N/A' }}</p> <!-- Aqui está a referência -->
                             </div>
                         </div>
                         <div class="flex items-center flex-col min-[550px]:flex-row w-full gap-2">
@@ -44,9 +44,37 @@
                         Solicitar Orçamento
                     </button>
                 </div>
+
+                <!-- Botão para impressão -->
+                <div class="flex justify-center mt-8">
+                    <button onclick="printCart()" class="rounded-full py-4 w-full max-w-[280px] bg-blue-600 text-white font-semibold hover:bg-blue-700 transition text-center">
+                        Imprimir Carrinho
+                    </button>
+                </div>
             @endif
         </div>
 
+        <!-- Área oculta para impressão -->
+        <div id="print-area" class="hidden">
+            <h3 class="text-2xl font-semibold text-center text-gray-800 mb-4">Carrinho de Compras</h3>
+
+            @foreach ($cart as $productId => $product)
+                <div class="border-b py-4 flex justify-between items-center">
+                    <div class="pro-data w-full max-w-sm">
+                        <h5 class="font-semibold text-xl text-black">{{ $product['name'] }}</h5>
+                        <p class="text-lg text-gray-600">Marca: {{ $product['brand'] ?? 'N/A' }}</p>
+                        <p class="text-lg text-gray-600">Referência: {{ $product['reference'] ?? 'N/A' }}</p> <!-- Adicionando a referência -->
+                        <p class="text-lg text-gray-600">Quantidade: {{ $product['quantity'] }}</p>
+                    </div>
+                    
+                    <div class="img-box">
+                        <img src="{{ asset('images/equipments/' . $product['image']) }}" alt="{{ $product['name'] }}" class="w-[100px] h-[100px] object-cover rounded-xl">
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        <!-- Formulário de Orçamento -->
         <div id="form-orcamento" class="mt-12 hidden">
             <form method="POST" action="{{ route('send.email') }}" class="bg-white p-6 rounded-xl shadow-md max-w-2xl mx-auto space-y-4">
                 @csrf
@@ -64,7 +92,7 @@
             
                 <div>
                     <label for="telefone" class="block mb-1 text-gray-700">Telefone</label>
-                    <input type="text" id="telefone" name="telefone" class="w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-red-300" required>
+                    <input type="tel" id="telefone" name="telefone" class="w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-red-300" placeholder="Digite um número de telefone válido" required>
                 </div>
             
                 <div>
@@ -77,6 +105,44 @@
                 </button>
             </form>
         </div>
-
     </section>
+
+    <!-- Incluindo a biblioteca intl-tel-input -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+    <script>
+        // Inicializa o campo de telefone com a biblioteca intl-tel-input
+        var input = document.querySelector("#telefone");
+        var iti = window.intlTelInput(input, {
+            initialCountry: "pt", // Define Portugal como país inicial
+            separateDialCode: true, // Exibe o código do país ao lado do número
+            preferredCountries: ['pt', 'br', 'us'], // Define países preferenciais
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js" // Carrega a função de utilitários
+        });
+
+        // Validação para garantir que apenas números sejam aceitos no campo de telefone
+        input.addEventListener('input', function () {
+            var valid = iti.isValidNumber();
+            if (!valid) {
+                input.setCustomValidity('Por favor, insira um número de telefone válido.');
+            } else {
+                input.setCustomValidity('');
+            }
+        });
+
+        // Função para imprimir os itens do carrinho
+        function printCart() {
+            var printArea = document.getElementById('print-area');
+            var originalContent = document.body.innerHTML;
+
+            // Torna visível a área para impressão
+            document.body.innerHTML = printArea.innerHTML;
+
+            window.print();
+
+            // Restaura o conteúdo original após a impressão
+            document.body.innerHTML = originalContent;
+        }
+    </script>
 </x-guestLayout>

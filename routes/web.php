@@ -31,7 +31,8 @@ Auth::loginUsingId(1); // Força login com o usuário ID 1
 // ------------------------------------------
 Route::get('/', fn() => view('welcome', [
     'partners' => Partner::all(),
-    'newsInformation' => NewsInformation::latest()->take(3)->get()
+    'newsInformation' => NewsInformation::latest()->take(3)->get(),
+    'equipments' => Equipment::latest()->take(3)->get()
 ]));
 
 // ------------------------------------------
@@ -61,8 +62,11 @@ Route::prefix('equipments')->name('equipments.')->group(function () {
 
     Route::get('/create', [EquipmentController::class, 'create'])->name('create');
     Route::post('/store', [EquipmentController::class, 'store'])->name('store');
-    Route::get('/{reference}', [EquipmentController::class, 'show'])->name('show');
+    Route::get('/{reference}', [EquipmentController::class, 'show'])
+        ->where('reference', '[0-9]+')
+        ->name('show');
 });
+
 
 // ------------------------------------------
 // 🖼️ UPLOADS DE IMAGENS
@@ -116,3 +120,5 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 });
 
 Route::post('/pedidos/email', [PedidosController::class, 'sendEmail'])->name('send.email');
+
+

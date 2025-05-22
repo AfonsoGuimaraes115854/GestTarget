@@ -12,18 +12,18 @@
             @foreach ([ 
                 'Parceiros' => [
                     ['Criar', '/partners/create'],
-                    ['Editar', '/partners/edit'],
-                    ['Eliminar', '/partners/delete']
+                    // ['Editar', '/partners/edit'],
+                    // ['Eliminar', '/partners/delete']
                 ],
                 'Equipamentos' => [
                     ['Criar', '/equipments/create'],
-                    ['Editar', '/equipments/edit'],
-                    ['Eliminar', '/equipments/delete']
+                    // ['Editar', '/equipments/edit'],
+                    // ['Eliminar', '/equipments/delete']
                 ],
                 'Noticías' => [
                     ['Criar', '/newsinformation/create'],
-                    ['Editar', '/newsinformation/edit'],
-                    ['Eliminar', '/newsinformation/delete']
+                    // ['Editar', '/newsinformation/edit'],
+                    // ['Eliminar', '/newsinformation/delete']
                 ]
             ] as $section => $links)
                 <div class="bg-white rounded-2xl shadow-md p-6">
@@ -49,13 +49,13 @@
                     <h4 class="text-gray-600">Total Parceiros</h4>
                     <p class="text-3xl font-bold text-red-600">{{ $totalPartners ?? '0' }}</p>
                 </div>
-                <div class="bg-white rounded-xl shadow-md p-6">
+                {{-- <div class="bg-white rounded-xl shadow-md p-6">
                     <h4 class="text-gray-600">Equipamentos Ativos</h4>
                     <p class="text-3xl font-bold text-red-600">{{ $activeEquipments ?? '0' }}</p>
-                </div>
+                </div> --}}
                 <div class="bg-white rounded-xl shadow-md p-6">
                     <h4 class="text-gray-600">Noticías Registradas</h4>
-                    <p class="text-3xl font-bold text-red-600">{{ $brandCount ?? '0' }}</p>
+                    <p class="text-3xl font-bold text-red-600">{{ $newsinformationCount ?? '0' }}</p>
                 </div>
                 <div class="bg-white rounded-xl shadow-md p-6">
                     <h4 class="text-gray-600">Parceiros Ativos</h4>
@@ -64,7 +64,7 @@
             </div>
             <!-- Equipamentos Criados -->
             <div class="bg-white rounded-xl shadow-md p-6">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4">Equipamentos Criados</h3>
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Equipamentos Ativos</h3>
             
                 @if($equipments->isEmpty())
                     <p class="text-gray-500">Nenhum equipamento criado ainda.</p>
@@ -98,18 +98,6 @@
                         </tbody>
                     </table>
                 @endif
-            </div>
-
-            <!-- Recent Activity -->
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4">Atividades Recentes</h3>
-                <ul class="space-y-3 text-sm text-gray-600">
-                    @forelse ($recentActivities ?? [] as $activity)
-                        <li class="border-l-4 border-red-500 pl-3">{{ $activity }}</li>
-                    @empty
-                        <li class="text-gray-400 italic">Nenhuma atividade recente.</li>
-                    @endforelse
-                </ul>
             </div>
 
             <!-- Quick Actions -->
