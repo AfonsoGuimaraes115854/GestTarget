@@ -47,9 +47,9 @@
     <div class="max-w-screen-xl mx-auto px-4 py-2">
       <!-- Desktop -->
       <ul class="hidden lg:flex justify-center space-x-6">
-        <li><a href="/equipments" class="text-red-600 hover:underline decoration-red-600">Equipamentos</a></li>
-        <li><a href="/newsinformation" class="text-red-600 hover:underline decoration-red-600">Notícias</a></li>
-        <li><a href="/partners" class="text-red-600 hover:underline decoration-red-600">Parceiros</a></li>
+        <li><a href="/equipamentos" class="text-red-600 hover:underline decoration-red-600">Equipamentos</a></li>
+        <li><a href="/noticías" class="text-red-600 hover:underline decoration-red-600">Notícias</a></li>
+        <li><a href="/parceiros" class="text-red-600 hover:underline decoration-red-600">Parceiros</a></li>
         <li><a href="/contactos" class="text-red-600 hover:underline decoration-red-600">Contactos</a></li>
         <li class="relative">
           <a href="{{ route('carrinho.exibir') }}" class="relative text-red-600 hover:underline decoration-red-600">
@@ -68,9 +68,9 @@
       <!-- Mobile -->
       <div id="mobile-menu" class="lg:hidden hidden text-white">
         <ul class="flex flex-col items-center space-y-3 py-4">
-          <li><a href="/equipments" class="text-red-600 hover:underline">Equipamentos</a></li>
-          <li><a href="/newsinformation" class="text-red-600 hover:underline">Notícias</a></li>
-          <li><a href="/partners" class="text-red-600 hover:underline">Parceiros</a></li>
+          <li><a href="/equipamentos" class="text-red-600 hover:underline">Equipamentos</a></li>
+          <li><a href="/noticías" class="text-red-600 hover:underline">Notícias</a></li>
+          <li><a href="/parceiros" class="text-red-600 hover:underline">Parceiros</a></li>
           <li><a href="/contactos" class="text-red-600 hover:underline">Contactos</a></li>
           <li><a href="{{ route('carrinho.exibir') }}" class="text-red-600 hover:underline">Carrinho</a></li>
         </ul>

@@ -38,7 +38,7 @@ Route::get('/', fn() => view('welcome', [
 // ------------------------------------------
 // 📰 ROTAS DE NOTÍCIAS (NewsInformation)
 // ------------------------------------------
-Route::prefix('newsinformation')->name('newsinformation.')->group(function () {
+Route::prefix('noticías')->name('newsinformation.')->group(function () {
     Route::get('/', [NewsInformationController::class, 'index'])->name('index');
     Route::get('/create', fn() => view('newsinformation.create'))->name('create');
     Route::post('/store', [NewsInformationController::class, 'store'])->name('store');
@@ -51,7 +51,7 @@ Route::prefix('newsinformation')->name('newsinformation.')->group(function () {
 // ------------------------------------------
 // ⚙️ ROTAS DE EQUIPAMENTOS
 // ------------------------------------------
-Route::prefix('equipments')->name('equipments.')->group(function () {
+Route::prefix('equipamentos')->name('equipments.')->group(function () {
     Route::get('/', function () {
         return view('equipments', [
             'equipments' => Equipment::all(),
@@ -93,11 +93,10 @@ Route::post('/image_upload/store', function (Request $request) {
 // ------------------------------------------
 // 🗂️ PÁGINAS ESTÁTICAS
 // ------------------------------------------
-Route::view('/about', 'about');
-Route::view('/partners', 'partners', ['partners' => Partner::all()]);
+Route::view('/parceiros', 'partners', ['partners' => Partner::all()]);
 Route::view('/contactos', 'contactos')->name('contactos');
 Route::view('/serviços', 'servicos');
-Route::view('/sobre', 'sobre');
+Route::view('/sobre-nós', 'sobre');
 Route::view('/termos-e-condicoes', 'termos-e-condicoes');
 Route::view('/politica-de-privacidade', 'politica-de-privacidade');
 

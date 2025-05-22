@@ -9,19 +9,19 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 px-10 pt-10 pb-32">
         <!-- Sidebar -->
         <aside class="lg:col-span-3 space-y-6">
-            @foreach ([ 
-                'Parceiros' => [
-                    ['Criar', '/partners/create'],
+             @foreach ([ 
+                // 'Parceiros' => [
+                //     ['Criar', '/partners/create'],
                     // ['Editar', '/partners/edit'],
                     // ['Eliminar', '/partners/delete']
-                ],
+                // ],
                 'Equipamentos' => [
-                    ['Criar', '/equipments/create'],
+                    ['Criar', '/equipamentos/create'],
                     // ['Editar', '/equipments/edit'],
                     // ['Eliminar', '/equipments/delete']
                 ],
                 'Noticías' => [
-                    ['Criar', '/newsinformation/create'],
+                    ['Criar', '/noticías/create'],
                     // ['Editar', '/newsinformation/edit'],
                     // ['Eliminar', '/newsinformation/delete']
                 ]
@@ -104,9 +104,9 @@
             <div class="bg-white rounded-xl shadow-md p-6">
                 <h3 class="text-xl font-semibold text-gray-800 mb-4">Ações Rápidas</h3>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <a href="/partners/create" class="bg-red-600 text-white py-3 px-4 rounded-xl text-center hover:bg-red-700 transition">+ Parceiro</a>
-                    <a href="/equipments/create" class="bg-red-600 text-white py-3 px-4 rounded-xl text-center hover:bg-red-700 transition">+ Equipamento</a>
-                    <a href="/newsinformation/create" class="bg-red-600 text-white py-3 px-4 rounded-xl text-center hover:bg-red-700 transition">+ Noticías</a>
+                    {{-- <a href="/partners/create" class="bg-red-600 text-white py-3 px-4 rounded-xl text-center hover:bg-red-700 transition">+ Parceiro</a> --}}
+                    <a href="/equipamentos/create" class="bg-red-600 text-white py-3 px-4 rounded-xl text-center hover:bg-red-700 transition">+ Equipamento</a>
+                    <a href="/noticías/create" class="bg-red-600 text-white py-3 px-4 rounded-xl text-center hover:bg-red-700 transition">+ Noticías</a>
                 </div>
             </div>
         </main>
